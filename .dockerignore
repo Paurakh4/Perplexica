@@ -1,1 +1,44 @@
+# Version control
+.git
+.gitignore
+
+# Dependencies
+node_modules
 **/node_modules
+
+# Builds
+dist
+build
+**/dist
+**/build
+.next
+
+# Environment and config
+.env
+.env.*
+!.env.example
+
+# Development
+.vscode
+.idea
+*.log
+coverage
+test
+tests
+
+# Data and uploads
+data/*
+!data/.gitkeep
+uploads/*
+!uploads/.gitkeep
+
+# Documentation
+docs
+*.md
+!README.md
+
+# Temporary files
+.DS_Store
+*.tmp
+*.temp
+.cache

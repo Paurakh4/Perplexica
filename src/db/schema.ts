@@ -1,15 +1,12 @@
-import { sql } from 'drizzle-orm';
-import { text, integer, sqliteTable } from 'drizzle-orm/sqlite-core';
+import { pgTable, text, integer, timestamp, jsonb } from 'drizzle-orm/pg-core';
 
-export const messages = sqliteTable('messages', {
+export const messages = pgTable('messages', {
   id: integer('id').primaryKey(),
   content: text('content').notNull(),
-  chatId: text('chatId').notNull(),
-  messageId: text('messageId').notNull(),
+  chatId: text('chat_id').notNull(),
+  messageId: text('message_id').notNull(),
   role: text('type', { enum: ['assistant', 'user'] }),
-  metadata: text('metadata', {
-    mode: 'json',
-  }),
+  metadata: jsonb('metadata'),
 });
 
 interface File {
@@ -17,12 +14,10 @@ interface File {
   fileId: string;
 }
 
-export const chats = sqliteTable('chats', {
+export const chats = pgTable('chats', {
   id: text('id').primaryKey(),
   title: text('title').notNull(),
-  createdAt: text('createdAt').notNull(),
-  focusMode: text('focusMode').notNull(),
-  files: text('files', { mode: 'json' })
-    .$type<File[]>()
-    .default(sql`'[]'`),
+  createdAt: timestamp('created_at').notNull().defaultNow(),
+  focusMode: text('focus_mode').notNull(),
+  files: jsonb('files').default('[]').$type<File[]>(),
 });

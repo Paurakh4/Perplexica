@@ -8,8 +8,11 @@ import chatsRouter from './chats';
 import searchRouter from './search';
 import discoverRouter from './discover';
 import uploadsRouter from './uploads';
+import healthRouter from './health';
 
 const router = express.Router();
+
+router.use('/health', healthRouter);
 
 router.use('/images', imagesRouter);
 router.use('/videos', videosRouter);

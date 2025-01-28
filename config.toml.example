@@ -1,0 +1,14 @@
+[GENERAL]
+PORT = 3000
+SIMILARITY_MEASURE = "cosine"
+KEEP_ALIVE = "60"
+
+[API_KEYS]
+OPENAI = ""
+GROQ = ""
+ANTHROPIC = ""
+GEMINI = ""
+
+[API_ENDPOINTS]
+SEARXNG = "http://localhost:8080"
+OLLAMA = "http://localhost:11434"

@@ -1,0 +1,25 @@
+[build]
+builder = "nixpacks"
+buildCommand = "cd ui && yarn install && yarn build && cd .. && yarn install"
+
+[deploy]
+startCommand = "yarn start"
+healthcheckPath = "/api/health"
+healthcheckTimeout = 100
+restartPolicyType = "on-failure"
+restartPolicyMaxRetries = 10
+
+[deploy.envs]
+NODE_ENV = "production"
+PORT = "3000"
+
+[[services]]
+name = "web"
+type = "web"
+env = "production"
+autoDeploy = true
+healthCheck = "/"
+
+[mounts]
+source = "data"
+destination = "/data"
