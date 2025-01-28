@@ -1,6 +1,6 @@
 [build]
 builder = "nixpacks"
-buildCommand = "cd ui && yarn install && yarn build && cd .. && yarn install && tsc"
+buildCommand = "cd ui && yarn install && yarn build && cd .. && yarn install && yarn tsc --project tsconfig.json"
 
 [nixpacks]
 nodejs_version = "20"
