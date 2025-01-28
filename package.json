@@ -2,11 +2,11 @@
   "name": "perplexica-backend",
   "version": "1.10.0-rc2",
   "license": "MIT",
+  "type": "module",
   "author": "ItzCrazyKns",
   "scripts": {
     "start": "node dist/app.js",
-    "build": "tsc && cd ui && yarn install && yarn build && cd ..",
-    "postinstall": "npm run db:migrate",
+    "build": "tsc && cd ui && yarn install && yarn build && cd .. && npm run db:migrate",
     "dev": "nodemon --ignore uploads/ src/app.ts",
     "db:generate": "drizzle-kit generate",
     "db:migrate": "node -r dotenv/config ./drizzle/migrate.js",
