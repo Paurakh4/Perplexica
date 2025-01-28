@@ -1,6 +1,9 @@
 [build]
 builder = "nixpacks"
-buildCommand = "cd ui && yarn install && yarn build && cd .. && yarn install"
+buildCommand = "cd ui && yarn install && yarn build && cd .. && yarn install && tsc"
+
+[nixpacks]
+nodejs_version = "20"
 
 [deploy.env]
 DATABASE_URL = "${DATABASE_URL}"

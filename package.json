@@ -6,7 +6,8 @@
   "author": "ItzCrazyKns",
   "scripts": {
     "start": "node dist/app.js",
-    "build": "tsc && cd ui && yarn install && yarn build && cd .. && npm run db:migrate",
+    "build": "tsc && cd ui && yarn install && yarn build && cd ..",
+    "postbuild": "node -r dotenv/config ./drizzle/migrate.js",
     "dev": "nodemon --ignore uploads/ src/app.ts",
     "db:generate": "drizzle-kit generate",
     "db:migrate": "node -r dotenv/config ./drizzle/migrate.js",
